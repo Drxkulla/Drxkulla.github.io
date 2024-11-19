@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DEBITS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: auto;
+            padding: 20px;
+            background-color: #fff;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h2, h3 {
+            text-align: center;
+            color: #333;
+        }
+
+        .form-group {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            flex: 0 0 20%;
+            font-weight: bold;
+            margin-right: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .form-group input {
+            flex: 1 1 40%;
+            padding: 8px;
+            margin-bottom: 5px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        .form-group input[type="number"] {
+            -webkit-appearance: none;
+            -moz-appearance: textfield;
+        }
+
+        button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #007BFF;
+            color: #fff;
+            font-size: 16px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .json-output {
+            background-color: #f9f9f9;
+            padding: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            margin-top: 20px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+
+        .json-input {
+            width: 100%;
+            height: 200px;
+            padding: 10px;
+            margin-top: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-family: monospace;
+            font-size: 14px;
+            white-space: pre-wrap;
+            word-wrap: break-word;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>DEBITS</h2>
+    <form id="dataForm">
+        <div class="form-group">
+            <label for="reference">Reference:</label>
+            <input type="text" id="reference" name="Reference">
+        </div>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="Name">
+        </div>
+        <div class="form-group">
+            <label for="initials">Initials:</label>
+            <input type="text" id="initials" name="Initials">
+        </div>
+        <div class="form-group">
+            <label for="surname">Surname:</label>
+            <input type="text" id="surname" name="Surname">
+        </div>
+        <div class="form-group">
+            <label for="idNumber">ID Number:</label>
+            <input type="number" id="idNumber" name="ID Number">
+        </div>
+        <div class="form-group">
+            <label for="address">Address:</label>
+            <input type="text" id="address" name="Address">
+        </div>
+        <div class="form-group">
+            <label for="cellphone">Cellphone:</label>
+            <input type="number" id="cellphone" name="Cellphone">
+        </div>
+        <div class="form-group">
+            <label for="telephone">Telephone:</label>
+            <input type="number" id="telephone" name="Telephone">
+        </div>
+        <div class="form-group">
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="Email">
+        </div>
+        <div class="form-group">
+            <label for="bankName">Bank Name:</label>
+            <input type="text" id="bankName" name="Bank Name">
+        </div>
+        <div class="form-group">
+            <label for="accountNumber">Account Number:</label>
+            <input type="number" id="accountNumber" name="Account Number">
+        </div>
+        <div class="form-group">
+            <label for="branchName">Branch Name:</label>
+            <input type="text" id="branchName" name="Branch Name">
+        </div>
+        <div class="form-group">
+            <label for="branchType">Branch Type:</label>
+            <input type="text" id="branchType" name="Branch Type">
+        </div>
+        <div class="form-group">
+            <label for="branchCode">Branch Code:</label>
+            <input type="number" id="branchCode" name="Branch Code">
+        </div>
+        <div class="form-group">
+            <label for="amount">Amount:</label>
+            <input type="number" id="amount" name="Amount">
+        </div>
+        <div class="form-group">
+            <label for="agreementDate">Agreement Date:</label>
+            <input type="date" id="agreementDate" name="Agreement Date">
+        </div>
+        <div class="form-group">
+            <label for="commencingDate">Commencing Date:</label>
+            <input type="date" id="commencingDate" name="Commencing Date">
+        </div>
+        <div class="form-group">
+            <label for="monthlyDay">Monthly Day:</label>
+            <input type="number" id="monthlyDay" name="Monthly Day">
+        </div>
+        <div class="form-group">
+            <label for="decemberDay">December Day:</label>
+            <input type="number" id="decemberDay" name="December Day">
+        </div>
+        <div class="form-group">
+            <label for="signedDate">Signed Date:</label>
+            <input type="date" id="signedDate" name="Signed Date">
+        </div>
+        <div class="form-group">
+            <label for="representative">Tshitshithe Representative:</label>
+            <input type="text" id="representative" name="Tshitshithe Representative">
+        </div>
+        <div class="form-group">
+            <label for="comments">Comments:</label>
+            <input type="text" id="comments" name="Comments">
+        </div>
+        <div class="form-group">
+            <label for="status">Status (Active / Inactive):</label>
+            <input type="text" id="status" name="Status (Active / Inactive)">
+        </div>
+        <div class="form-group">
+            <label for="lastDateDebit">Last Date of Debit:</label>
+            <input type="date" id="lastDateDebit" name="Last Date of Debit">
+        </div>
+        <div class="form-group">
+            <label for="numberOfDebits">Number of Debits:</label>
+            <input type="number" id="numberOfDebits" name="Number of Debits">
+        </div>
+        <button type="button" onclick="addData()">Add to JSON</button>
+    </form>
+
+    <h3>JSON Data</h3>
+    <textarea id="jsonInput" class="json-input" readonly></textarea>
+</div>
+
+<script>
+    // Initialize JSON data array
+    let jsonData = [];
+
+    // Function to add data from form to JSON array
+    function addData() {
+        // Create a new data object from the form inputs
+        const newData = {
+            "Reference": document.getElementById("reference").value,
+            "Name": document.getElementById("name").value,
+            "Initials": document.getElementById("initials").value,
+            "Surname": document.getElementById("surname").value,
+            "ID Number": document.getElementById("idNumber").value,
+            "Address": document.getElementById("address").value,
+            "Cellphone": document.getElementById("cellphone").value,
+            "Telephone": document.getElementById("telephone").value,
+            "Email": document.getElementById("email").value,
+            "Bank Name": document.getElementById("bankName").value,
+            "Account Number": document.getElementById("accountNumber").value,
+            "Branch Name": document.getElementById("branchName").value,
+            "Branch Type": document.getElementById("branchType").value,
+            "Branch Code": document.getElementById("branchCode").value,
+            "Amount": document.getElementById("amount").value,
+            "Agreement Date": document.getElementById("agreementDate").value,
+            "Commencing Date": document.getElementById("commencingDate").value,
+            "Monthly Day": document.getElementById("monthlyDay").value,
+            "December Day": document.getElementById("decemberDay").value,
+            "Signed Date": document.getElementById("signedDate").value,
+            "Tshitshithe Representative": document.getElementById("representative").value,
+            "Comments": document.getElementById("comments").value,
+            "Status (Active / Inactive)": document.getElementById("status").value,
+            "Last Date of Debit": document.getElementById("lastDateDebit").value,
+            "Number of Debits": document.getElementById("numberOfDebits").value
+        };
+
+        // Add the new data to the JSON array
+        jsonData.push(newData);
+
+        // Display the updated JSON data in the textarea for manual editing
+        document.getElementById("jsonInput").value = JSON.stringify(jsonData, null, 2);
+
+        // Clear the form after adding data
+        document.getElementById("dataForm").reset();
+    }
+</script>
+
+</body>
+</html>
