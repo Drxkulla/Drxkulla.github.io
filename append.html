@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Socket.IO Chat</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f5;
+        }
+        #container {
+            width: 500px;
+            height: 550px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            padding: 10px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        #DISPLAY {
+            width: 100%;
+            height: 450px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 10px;
+            overflow-y: auto;
+            background-color: #fafafa;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        #text {
+            width: 80%;
+            height: 40px;
+            padding: 8px;
+            border-radius: 8px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+            box-sizing: border-box;
+        }
+        #submit {
+            width: 15%;
+            height: 40px;
+            margin-left: 10px;
+            border-radius: 8px;
+            background-color: #4CAF50;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            border: none;
+        }
+        #submit:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div id="DISPLAY"></div>
+        <div style="display: flex; align-items: center;">
+            <input id="text" placeholder="Enter message">
+            <button id="submit">Send</button>
+        </div>
+    </div>
+
+    <script src="/socket.io/socket.io.js"></script> <!-- Include Socket.io library -->
+    <script>
+        const socket = io(); // Connect to the server
+
+        let Display = document.getElementById("DISPLAY");
+        const Word = document.getElementById("text");
+        const button = document.getElementById("submit");
+
+        // Function to send message to the server
+        function sendMessage() {
+            if (Word.value.trim()) {
+                socket.emit('chat message', Word.value); // Emit message to server
+                Word.value = ""; // Clear input
+            }
+        }
+
+        button.addEventListener("click", sendMessage);
+        Word.addEventListener("keypress", function(event) {
+            if (event.key === "Enter") {
+                sendMessage();
+            }
+        });
+
+        // Listen for chat messages from the server
+        socket.on('chat message', (msg) => {
+            Display.innerHTML += `<div style="margin: 5px 0; padding: 5px; background-color: #e6f7ff; border-radius: 5px;">${msg}</div>`;
+            Display.scrollTop = Display.scrollHeight; // Auto-scroll
+        });
+    </script>
+</body>
+</html>
